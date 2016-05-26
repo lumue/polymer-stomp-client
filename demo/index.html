@@ -23,23 +23,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <p>Make words! <button id="saybtn">Say Something</button></p>
     <p>Make lasers! <button id="laserbtn">Fire lasers</button></p>
 
-    <stomp-client author='{"name": "Lord Meowser", "image": "http://lorempixel.com/g/300/200/cats/"}' fancy>
-      <h2>Hello stomp-client</h2>
+    <stomp-client
+          url="http://localhost:8080/hello"
+          topic="/topic/greetings">
     </stomp-client>
 
     <script>
-      var seedElement = document.querySelector('stomp-client');
 
-      document.querySelector('#saybtn').addEventListener('click', function() {
-        alert(seedElement.sayHello('Hallo!'));
-      });
-
-      document.querySelector('#laserbtn').addEventListener('click', function() {
-        seedElement.fireLasers();
-      });
-
-      document.addEventListener("stomp-client-lasers", function(e) {
-        console.log(e.detail.sound);
+      document.addEventListener("message", function(e) {
+        console.log(e.detail);
       });
 
     </script>
