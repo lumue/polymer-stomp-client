@@ -1,22 +1,4 @@
-
-<link rel="import" href="../polymer/polymer.html">
-
-<!--
-A polymer client element for the stomp websocket protocol
-
-Example:
-
-    <stomp-client></stomp-client>
-
-Example:
-
-    <stomp-client>
-      <h2>Hello stomp-client</h2>
-    </stomp-client>
-
-@demo demo/index.html
-@hero hero.svg
--->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <dom-module id="stomp-client">
   <template>
@@ -34,73 +16,52 @@ Example:
         is: 'stomp-client',
         socket: null,
         properties: {
-          topic: {
+          protocol: {
             type: String,
-            observer: '_onTopicChanged'
+            notify:true
           },
           url: {
             type: String,
-            observer: '_onUrlChanged'
-          },
-          lastmessage:{
-            type: Object,
             notify: true
           },
-          _stompClient:{
-            type: Object,
+          topic: {
+            type: String,
             notify: true
           }
         },
-
-        _onUrlChanged: function (newval,oldval) {
-            if (newval) {
-              this._createClient(newval);
-            }
+        _handleEvent: function (event) {
+          this.fire('message', event.detail);
         },
-
-        _onTopicChanged: function (newval,oldval) {
-          if (newval) {
-            this._connectClient(newval);
-          }
-        },
-
-        open: function(){
-          if(this.topic) {
-            _connectClient(this.topic);
-          }
-        },
-
-
         send: function (message) {
-          this.socket.send(message);
+          if(this.socket)
+            this.socket.send(message);
         },
-
         close: function () {
-          if(this.socket) {
+          if(this.socket)
             this.socket.close();
-          }
         },
+        connect:function () {
 
-        _onConnected: function () {
-          this.fire('connected');
-        },
+          if(this.socket)
+            this.close();
 
-        _onMessage: function (message) {
-          this.lastmessage=message;
-          this.fire('onmessage', message);
-        },
+          if(!this.url || !this.topic)
+            return;
 
-        _connectClient: function (topic) {
-          this._stompClient.connect({}, function() {
+          this.socket = new SockJS(this.url);
+
+          var stompClient = Stomp.over(this.socket);
+          var topic=this.topic
+          var element=this
+          stompClient.connect({}, function() {
+
             stompClient.subscribe(topic, function(message){
-              this._onMessage(message)
-            })
-            this._onConnected()
-          })
-        },
+              var parsedMessage=JSON.parse(message.body);
+              var event = new CustomEvent('wsevent-downloads-job-state-change', { 'detail': parsedMessage });
+              element._handleEvent(event);
+            });
 
-        _createClient: function(url){
-          this._stompClient = Stomp.over( new SockJS(url))
+          });
         }
       })
     })();
