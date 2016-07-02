@@ -1,0 +1,36 @@
+{
+  "name": "stomp-client",
+  "authors": [
+    "Anonymous <anonymous@example.com>"
+  ],
+  "description": "An element providing a solution to no problem in particular.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "seed"
+  ],
+  "main": "stomp-client.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "^4.0.0"
+  },
+  "_release": "4cb1a02ef5",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "4cb1a02ef57ffe4b229e4a4d895427c7f1f61ca9"
+  },
+  "_source": "git://github.com/lumue/polymer-stomp-client.git",
+  "_target": "master",
+  "_originalSource": "lumue/polymer-stomp-client",
+  "_direct": true
+}
