@@ -14,7 +14,9 @@ env:
     - CXX=g++-4.8
 node_js: stable
 addons:
+
   firefox: latest
+
   apt:
     sources:
    #   - google-chrome
@@ -23,12 +25,13 @@ addons:
    #   - google-chrome-stable
       - g++-4.8
   sauce_connect: true
+
 before_install:
-    # Chrome Stable
-    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    - echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list
-    - sudo apt-get update -qq
-    - sudo apt-get install -y google-chrome-stable
+   # Chrome Stable
+  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  - echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list
+  - sudo apt-get update -qq
+  - sudo apt-get install -y google-chrome-stable
 script:
   - xvfb-run wct
   - "if [ \"${TRAVIS_PULL_REQUEST}\" = \"false\" ]; then wct -s 'default'; fi"
