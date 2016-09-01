@@ -1,6 +1,6 @@
 # stomp-client
 
-An element providing a starting point for your own reusable Polymer elements.
+polymer client element for stomp websocket communication
 
 
 ## Dependencies
