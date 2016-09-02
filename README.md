@@ -1,6 +1,9 @@
 # stomp-client
 
+[![Build Status](https://travis-ci.org/lumue/polymer-stomp-client.svg?branch=master)](https://travis-ci.org/lumue/polymer-stomp-client)
+
 polymer client element for stomp websocket communication
+
 
 
 ## Dependencies
