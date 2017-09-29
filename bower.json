@@ -1,13 +1,14 @@
 {
   "name": "stomp-client",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Lutz Müller <mueller.lutz@gmail.com>"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "An element providing a websocket connection using the stomp protocol.",
   "keywords": [
     "web-component",
     "polymer",
-    "seed"
+    "stomp",
+    "websocket"
   ],
   "main": "stomp-client.html",
   "license": "http://polymer.github.io/LICENSE.txt",
