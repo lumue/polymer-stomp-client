@@ -1,4 +1,4 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html">
 
 <dom-module id="stomp-client">
   <template>
@@ -8,6 +8,8 @@
       }
     </style>
   </template>
+  <script src="../sockjs/sockjs.min.js"></script>
+  <script src="../stomp-websocket/lib/stomp.min.js"></script>
   <script>
     (function() {
       'use strict';
@@ -57,7 +59,7 @@
 
             stompClient.subscribe(topic, function(message){
               var parsedMessage=JSON.parse(message.body);
-              var event = new CustomEvent('wsevent-downloads-job-state-change', { 'detail': parsedMessage });
+              var event = new CustomEvent('message', { 'detail': parsedMessage });
               element._handleEvent(event);
             });
 

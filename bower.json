@@ -1,24 +1,26 @@
 {
   "name": "stomp-client",
   "authors": [
-    "Lutz Müller <mueller.lutz@gmail.com>"
+    "lutz mueller <mueller.lutz@gmail.com>"
   ],
-  "description": "An element providing a websocket connection using the stomp protocol.",
+  "description": "This elements simplifies communication with a websocket using the stomp protocol",
   "keywords": [
     "web-component",
     "polymer",
-    "stomp",
-    "websocket"
+    "websocket",
+    "stomp"
   ],
   "main": "stomp-client.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "homepage": "https://github.com/lumue/polymer-stomp-client/",
   "ignore": [
     "/.*",
     "/test/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.2.0"
+    "polymer": "Polymer/polymer#^1.2.0",
+    "sockjs": "~0.3.4",
+    "stomp-websocket": "~2.3.4"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
